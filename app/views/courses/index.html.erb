@@ -22,8 +22,11 @@
         <td><%= course.course_name %></td>
         <td>
           <a href="/courses/<%= course.id %>" class="btn btn-primary">Show</a>
-          <a href="/courses/<%= course.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_course/<%= course.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == course.user %>
+            <a href="/courses/<%= course.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_course/<%= course.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
